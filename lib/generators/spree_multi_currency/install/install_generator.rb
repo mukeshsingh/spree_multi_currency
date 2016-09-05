@@ -2,6 +2,7 @@ module SpreeMultiCurrency
   module Generators
     class InstallGenerator < Rails::Generators::Base
       class_option :auto_run_migrations, type: :boolean, default: false
+      source_root File.expand_path('../templates', __FILE__)
 
       def add_javascripts
         append_file 'vendor/assets/javascripts/spree/frontend/all.js', "//= require spree/frontend/spree_multi_currency\n"
@@ -10,6 +11,10 @@ module SpreeMultiCurrency
 
       def add_migrations
         run 'bundle exec rake railties:install:migrations FROM=spree_multi_currency'
+      end
+
+      def copy_geoip_database
+        copy_file 'GeoIP.dat', 'db/GeoIP.dat'
       end
 
       def run_migrations
