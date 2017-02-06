@@ -22,8 +22,12 @@ Gem::Specification.new do |s|
   s.require_path = 'lib'
   s.requirements << 'none'
 
-  s.add_runtime_dependency 'spree_backend', '~> 3.1.0.beta'
+  s.add_runtime_dependency 'spree_backend', '>= 3.1.0', '< 4.0'
+  s.add_runtime_dependency 'countries'
+  s.add_runtime_dependency 'geoip'
 
+
+  s.add_development_dependency 'appraisal'
   s.add_development_dependency 'capybara', '~> 2.4.4'
   s.add_development_dependency 'poltergeist', '~> 1.6.0'
   s.add_development_dependency 'factory_girl', '~> 4.4'
