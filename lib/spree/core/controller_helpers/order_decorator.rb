@@ -14,7 +14,7 @@ Spree::Core::ControllerHelpers::Order.class_eval do
     @geoip ||= GeoIP.new("#{Rails.root}/db/GeoIP.dat")
     geo_data = @geoip.country(user_ip)
     if geo_data && ISO3166::Country.find_country_by_alpha3(geo_data.country_code3)
-      ISO3166::Country.find_country_by_alpha3(geo_data.country_code3).currency.code
+      ISO3166::Country.find_country_by_alpha3(geo_data.country_code3).currency.iso_code
     end
   end
 
